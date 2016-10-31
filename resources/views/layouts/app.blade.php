@@ -30,8 +30,12 @@
                     <button type="submit" class="btn btn-default"><i class="fa fa-search fa-md"></i> Искать</button>
                 </form>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#"><i class="fa fa-user fa-lg"></i> Войти</a></li>
-                    <li><a href="#"><i class="fa fa-sign-in fa-lg"></i> Регистрация</a></li>
+                    @if (Auth::check())
+                        <li><a href="/logout"><i class="fa fa-sign-out fa-lg"></i> Выйти</a></li>
+                    @else
+                        <li><a href="/login"><i class="fa fa-user fa-lg"></i> Войти</a></li>
+                        <li><a href="/register"><i class="fa fa-sign-in fa-lg"></i> Регистрация</a></li>
+                    @endif
                 </ul>
             </div>
         </div>
