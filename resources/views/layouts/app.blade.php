@@ -19,7 +19,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/">Заказ Пиццы</a>
+                <a class="navbar-brand" href="/">Мама Пицца</a>
             </div>
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -31,9 +31,10 @@
                 </form>
                 <ul class="nav navbar-nav navbar-right">
                     @if (Auth::check())
+                        <li><a href="/user/{{ Auth::id() }}/profile"><i class="fa fa-user fa-lg"></i> Профиль</a></li>
                         <li><a href="/logout"><i class="fa fa-sign-out fa-lg"></i> Выйти</a></li>
                     @else
-                        <li><a href="/login"><i class="fa fa-user fa-lg"></i> Войти</a></li>
+                        <li><a href="/login"><i class="fa fa-user-o fa-lg"></i> Войти</a></li>
                         <li><a href="/register"><i class="fa fa-sign-in fa-lg"></i> Регистрация</a></li>
                     @endif
                 </ul>
