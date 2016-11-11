@@ -39,16 +39,18 @@ class ProductsController extends Controller
 
     public function store(ProductRequest $request)
     {
-        $imageName = $request->name . '.' . $request->file('image')->getClientOriginalExtension();
+        $name = mb_convert_case(trim($request->name), MB_CASE_TITLE);
+        $imageName = $name . '.' . $request->file('image')->getClientOriginalExtension();
         $pathToImages = base_path() . '/public/images/';
 
         $request->file('image')->move($pathToImages, $imageName);
 
         $data = [
             'category' => $request->category,
-            'name' => $request->name,
+            'name' => $name,
             'price' => $request->price,
             'weight' => $request->weight,
+            'diameter' => $request->diameter,
             'pathToImage' => 'images/' . $imageName,
             'composition' => $request->composition,
             'description' => $request->description
@@ -56,6 +58,6 @@ class ProductsController extends Controller
 
         Product::create($data);
 
-        return redirect('/');
+        return redirect('/')->with('success_message', 'Товар был успешно добавлен!');
     }
 }

@@ -14,14 +14,19 @@
                         {!! Form::text('name', null, ['class' => 'form-control']) !!}
                         <hr>
                         {!! Form::label('category', 'Категория:') !!}
-                        {!! Form::text('category', null, ['class' => 'form-control']) !!}
+                        Пицца {!! Form::radio('category', 'pizza')  !!}
+                        Суши {{ Form::radio('category', 'sushi') }}
+                        Напитки {{ Form::radio('category', 'drinks') }}
+                        Соусы {{ Form::radio('category', 'sausages') }}
+                        <br>
                         <hr>
+                        <br>
                         {!! Form::label('composition', 'Ингридиенты:') !!}
                         {!! Form::textarea('composition', null, ['class' => 'form-control']) !!}
                     </div>
                     <div class="col-md-4">
                         {!! Form::label('price', 'Цена товара:') !!}
-                        {!! Form::text(' price', null, ['class' => 'form-control']) !!}
+                        {!! Form::text('price', null, ['class' => 'form-control']) !!}
                         <hr>
                         {!! Form::label('weight', 'Вес:') !!}
                         {!! Form::text('weight', null, ['class' => 'form-control']) !!}
@@ -30,13 +35,12 @@
                         {!! Form::textarea('description', null, ['class' => 'form-control']) !!}
                     </div>
                     <div class="col-md-4">
+                        {!! Form::label('diameter', 'Диаметр (если пицца):') !!}
+                        {!! Form::text('diameter', null, ['class' => 'form-control']) !!}
                         <hr>
-                        <br>
-                        <br>
-                        <br>
                         <h2>Изображение:</h2>
                         {!! Form::file('image', null) !!}
-                        <hr>
+                        <br><br><br>
                         {!! Form::submit('Добавить товар', ['class' => 'btn btn-success form-control']) !!}
                     </div>
             </div>

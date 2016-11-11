@@ -24,10 +24,11 @@ class ProductRequest extends FormRequest
     public function rules()
     {
         return [
-            'category' => 'required|string|alpha',
+            'category' => 'required',
             'name' => 'required|string|unique:products,name|alpha',
             'price' => 'required|integer',
             'weight' => 'required|integer',
+            'diameter' => 'integer|nullable',
             'image' => 'required|image',
             'composition' => 'required|string',
             'description' => 'string|nullable'
@@ -45,10 +46,10 @@ class ProductRequest extends FormRequest
             'name.required' => 'Введите Название.',
             'name.unique' => 'Такое название пиццы уже существует.',
             'name.alpha' => 'Название пиццы должно состоять только из букв.',
-            'category.required' => 'Введите Категрию.',
-            'category.alpha' => 'Категория должна состоять только из букв.',
+            'category.required' => 'Введите Категорию.',
             'price.required' => 'Введите Цену.',
             'weight.required' => 'Введите Вес.',
+            'diameter.integer' => 'Диаметр должен состоять только из цифр.',
             'image.required' => 'Вставьте Изображение.',
             'composition.required' => 'Введите Ингридиенты'
         ];
