@@ -15,7 +15,7 @@
                         <p>{{ substr($product->composition, 0, 110) }}...</p>
                     @endif
 
-                    <a href="" class="btn btn-success"><i class="fa fa-shopping-cart "></i> В корзину</a>
+                    <a href="" class="btn btn-success"><i class="fa fa-shopping-cart "></i>&nbsp;В корзину</a>
                     <a href="{{ url("/{$product->category}", $product->id) }}" class="btn btn-primary pull-right">
                         Подробнее
                         <i class="fa fa-arrow-right"></i>

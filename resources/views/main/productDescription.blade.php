@@ -36,7 +36,7 @@
                     {{ $product->price }} рублей
                 </div>
             </div>
-            <button type="button" class="btn btn-success btn-lg center-block"><i class="fa fa-shopping-cart "></i> В корзину</button>
+            <button type="button" class="btn btn-success btn-lg center-block"><i class="fa fa-shopping-cart "></i>&nbsp;В корзину</button>
         </div>
     </div>
 @endsection

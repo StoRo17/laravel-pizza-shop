@@ -27,15 +27,15 @@
                     <div class="form-group">
                         <input type="text" class="form-control" placeholder="Поиск">
                     </div>
-                    <button type="submit" class="btn btn-default"><i class="fa fa-search fa-md"></i> Искать</button>
+                    <button type="submit" class="btn btn-default"><i class="fa fa-search fa-md"></i>&nbsp;Искать</button>
                 </form>
                 <ul class="nav navbar-nav navbar-right">
                     @if (Auth::check())
-                        <li><a href="/user/{{ Auth::id() }}/profile"><i class="fa fa-user fa-lg"></i> Профиль</a></li>
-                        <li><a href="/logout"><i class="fa fa-sign-out fa-lg"></i> Выйти</a></li>
+                        <li><a href="/user/{{ Auth::id() }}/profile"><i class="fa fa-user fa-lg"></i>&nbsp;Профиль</a></li>
+                        <li><a href="/logout"><i class="fa fa-sign-out fa-lg"></i>&nbsp;Выйти</a></li>
                     @else
-                        <li><a href="/login"><i class="fa fa-user-o fa-lg"></i> Войти</a></li>
-                        <li><a href="/register"><i class="fa fa-sign-in fa-lg"></i> Регистрация</a></li>
+                        <li><a href="/login"><i class="fa fa-user fa-lg"></i>&nbsp;Войти</a></li>
+                        <li><a href="/register"><i class="fa fa-sign-in fa-lg"></i>&nbsp;Регистрация</a></li>
                     @endif
                 </ul>
             </div>

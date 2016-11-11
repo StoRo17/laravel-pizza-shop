@@ -2,11 +2,11 @@
     <div class="list-group">
         <a class="list-group-item active">
             <i class="fa fa-list-ul fa-lg"></i>
-            Меню
+            &nbsp;Меню
         </a>
         <a href="/" class="list-group-item">
             <i class="fa fa-home fa-lg"></i>
-            Главная
+            &nbsp;Главная
         </a>
         <a href="/pizza" class="list-group-item">
             <img src="https://maxcdn.icons8.com/iOS7/PNG/25/Food/pizza-25.png" title="Pizza" width="20">
