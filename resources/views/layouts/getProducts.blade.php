@@ -1,4 +1,9 @@
 <div class="col-md-9">
+    @if (Session::has('success_message'))
+        <div class="alert alert-success">
+            <p class="text-center">{{ Session::get('success_message') }}</p>
+        </div>
+    @endif
     @foreach($products as $product)
         <div class="col-md-4">
             <div class="thumbnail">
@@ -7,7 +12,7 @@
                 </a>
                 <div class="caption">
                     <h3 class="pull-right">{{ $product->price }} руб.</h3>
-                    <h3>{{ $product->name }}</h3>
+                    <h3 id="product_name">{{ $product->name }}</h3>
                     <p id="product_composition">{{ $product->composition }}</p>
                     <a href="" class="btn btn-success"><i class="fa fa-shopping-cart "></i>&nbsp;В корзину</a>
                     <a href="{{ url("/{$product->category}", $product->id) }}" class="btn btn-primary pull-right">
