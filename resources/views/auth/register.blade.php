@@ -11,10 +11,13 @@
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Name</label>
+                            <label for="name" class="col-md-4 control-label">Имя</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
+                                <input id="name" type="text" class="form-control"
+                                       name="name" value="{{ old('name') }}" required autofocus
+                                       placeholder="Иван Иванов"
+                                >
 
                                 @if ($errors->has('name'))
                                     <span class="help-block">
@@ -24,11 +27,31 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+                        <div class="form-group{{ $errors->has('phone_number') ? ' has-error' : '' }}">
+                            <label for="phone_number" class="col-md-4 control-label">Номер телефона</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
+                                <input id="phone_number" type="text" class="form-control"
+                                       name="phone_number" value="{{ old('phone_number') }}" required autofocus
+                                       placeholder="+7..."
+                                >
+
+                                @if ($errors->has('phone_number'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('phone_number') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                            <label for="email" class="col-md-4 control-label">E-mail адрес</label>
+
+                            <div class="col-md-6">
+                                <input id="email" type="email" class="form-control"
+                                       name="email" value="{{ old('email') }}" required
+                                       placeholder="example@mail.com"
+                                >
 
                                 @if ($errors->has('email'))
                                     <span class="help-block">
@@ -39,10 +62,12 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Password</label>
+                            <label for="password" class="col-md-4 control-label">Пароль</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
+                                <input id="password" type="password" class="form-control"
+                                       name="password" required placeholder="Минимум 6 символов"
+                                >
 
                                 @if ($errors->has('password'))
                                     <span class="help-block">
@@ -53,7 +78,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
-                            <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
+                            <label for="password-confirm" class="col-md-4 control-label">Подтвердить пароль</label>
 
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
@@ -69,7 +94,7 @@
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
-                                    Register
+                                    Регистрация
                                 </button>
                             </div>
                         </div>
