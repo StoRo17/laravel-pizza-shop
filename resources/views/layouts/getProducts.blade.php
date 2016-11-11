@@ -8,13 +8,7 @@
                 <div class="caption">
                     <h3 class="pull-right">{{ $product->price }} руб.</h3>
                     <h3>{{ $product->name }}</h3>
-
-                    @if(strlen($product->composition) < 180)
-                        <p>{{ $product->composition }}</p>
-                    @else
-                        <p>{{ substr($product->composition, 0, 110) }}...</p>
-                    @endif
-
+                    <p id="product_composition">{{ $product->composition }}</p>
                     <a href="" class="btn btn-success"><i class="fa fa-shopping-cart "></i>&nbsp;В корзину</a>
                     <a href="{{ url("/{$product->category}", $product->id) }}" class="btn btn-primary pull-right">
                         Подробнее
