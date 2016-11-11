@@ -25,7 +25,7 @@ class ProductRequest extends FormRequest
     {
         return [
             'category' => 'required',
-            'name' => 'required|string|unique:products,name|alpha',
+            'name' => 'required|string|unique:products,name|regex:/^[\pL\s\-]+$/u',
             'price' => 'required|integer',
             'weight' => 'required|integer',
             'diameter' => 'integer|nullable',
@@ -45,7 +45,7 @@ class ProductRequest extends FormRequest
         return [
             'name.required' => 'Введите Название.',
             'name.unique' => 'Такое название пиццы уже существует.',
-            'name.alpha' => 'Название пиццы должно состоять только из букв.',
+            'name.regex' => 'Название пиццы должно состоять только из букв и пробелов.',
             'category.required' => 'Введите Категорию.',
             'price.required' => 'Введите Цену.',
             'weight.required' => 'Введите Вес.',
