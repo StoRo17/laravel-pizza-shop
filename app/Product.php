@@ -19,7 +19,8 @@ class Product extends Model
         'weight',
         'composition',
         'description',
-        'pathToImage'
+        'pathToImage',
+        'diameter'
     ];
 
     public $timestamps = false;

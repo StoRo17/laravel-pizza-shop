@@ -24,12 +24,14 @@
                     {{ $product->composition }}
                 </div>
             </div>
-            <div class="panel panel-info">
-                <div class="panel-heading">Диаметр:</div>
-                <div class="panel-body">
-                    30 см или 40 см
+            @if ($product->diameter)
+                <div class="panel panel-info">
+                    <div class="panel-heading">Диаметр:</div>
+                    <div class="panel-body">
+                        {{ $product->diameter }} см
+                    </div>
                 </div>
-            </div>
+            @endif
             <div class="panel panel-success">
                 <div class="panel-heading">Стоимость:</div>
                 <div class="panel-body">
