@@ -18,7 +18,7 @@ Route::get('/logout', 'Auth\LoginController@logout');
 Route::get('/register', 'Auth\RegisterController@showRegistrationForm');
 Route::post('/create_user', 'Auth\RegisterController@create');
 Route::get('/create_product', 'ProductsController@create');
-Route::get('/{category}', 'ProductsController@showCategory');
-Route::get('/{category}/{id}', 'ProductsController@show');
+Route::get('/{category}', 'ProductsController@showCategory')->where('category', 'pizza|sushi|drinks|sausages');
+Route::get('/{category}/{id}', 'ProductsController@show')->where('category', 'pizza|sushi|drinks|sausages');
 
 Route::post('/create_product', 'ProductsController@store');

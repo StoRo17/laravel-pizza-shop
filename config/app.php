@@ -164,6 +164,7 @@ return [
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
+        SleepingOwl\Admin\Providers\SleepingOwlServiceProvider::class,
 
         /*
          * Package Service Providers...
