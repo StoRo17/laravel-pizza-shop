@@ -45,6 +45,9 @@ class ProductsController extends Controller
 
         $request->file('image')->move($pathToImages, $imageName);
 
+        if ($request->diameter == '') {
+            $request->diameter = NULL;
+        }
         $data = [
             'category' => $request->category,
             'name' => $name,

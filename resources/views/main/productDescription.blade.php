@@ -7,8 +7,9 @@
     <div class="col-md-9">
         <div class="col-md-8">
             <h3 class="text-center">{{ $product->name }}</h3>
-            <img src="{{ URL::asset("{$product->pathToImage}") }}" class="center-block" alt="{{ $product->name }}" title="{{ $product->name }}">
-            @if($product->description != 'NULL')
+            <img src="{{ URL::asset("{$product->pathToImage}") }}" class="center-block" alt="{{ $product->name }}"
+                 title="{{ $product->name }}" style="width: 620px; height: 340px;">
+            @if($product->description != NULL)
                 <div class="panel panel-default">
                     <div class="panel-heading">Описание:</div>
                     <div class="panel-body">

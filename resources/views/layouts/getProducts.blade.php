@@ -8,7 +8,9 @@
         <div class="col-md-4">
             <div class="thumbnail">
                 <a href="{{ url("/{$product->category}", $product->id) }}">
-                    <img src="{{ URL::asset("{$product->pathToImage}") }}" alt="{{ $product->name }}" title="{{ $product->name }}">
+                    <img src="{{ URL::asset("{$product->pathToImage}") }}"
+                         alt="{{ $product->name }}" title="{{ $product->name }}"
+                         style="width: 288px; height: 161px;" class="img-responsive">
                 </a>
                 <div class="caption">
                     <h3 class="pull-right">{{ $product->price }} руб.</h3>
