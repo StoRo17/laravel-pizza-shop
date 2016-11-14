@@ -39,7 +39,14 @@
                         {!! Form::text('diameter', null, ['class' => 'form-control']) !!}
                         <hr>
                         <h2>Изображение:</h2>
-                        {!! Form::file('image', null) !!}
+                        <div class="input-group">
+                            <label class="input-group-btn">
+                                <span class="btn btn-primary">
+                                    Browse&hellip; <input type="file" style="display: none;" multiple>
+                                </span>
+                            </label>
+                            <input type="text" class="form-control" readonly>
+                        </div>
                         <br><br><br>
                         {!! Form::submit('Добавить товар', ['class' => 'btn btn-success form-control']) !!}
                     </div>
