@@ -31,7 +31,7 @@
                     <button type="submit" class="btn btn-default"><i class="fa fa-search fa-md"></i>&nbsp;Искать</button>
                 </form>
                 <ul class="nav navbar-nav navbar-right">
-                    @if (Auth::check())
+                    @if (Auth::guest())
                         <li><a href="/user/{{ Auth::id() }}/profile"><i class="fa fa-user fa-lg"></i>&nbsp;Профиль</a></li>
                         <li><a href="/logout"><i class="fa fa-sign-out fa-lg"></i>&nbsp;Выйти</a></li>
                     @else
