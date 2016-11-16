@@ -20,7 +20,7 @@ class CreateProductsTable extends Migration
             $table->unsignedInteger('price');
             $table->unsignedInteger('weight');
             $table->unsignedInteger('diameter')->nullable();
-            $table->longText('pathToImage');
+            $table->string('image')->default('product_default.jpg');
             $table->string('composition');
             $table->longText('description')->nullable();
         });

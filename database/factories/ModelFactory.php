@@ -13,13 +13,28 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 $factory->define(App\Product::class, function (Faker\Generator $faker) {
+    $categories = array(
+        'pizza',
+        'sushi',
+        'drinks',
+        'sausages'
+    );
+
     return [
-        'category' => 'drinks',
+        'category' => $categories[array_rand($categories)],
         'name' => $faker->sentence(),
         'price' => $faker->numberBetween(200, 450),
         'weight' => $faker->numberBetween(200, 450),
-        'pathToImage' => 'http://loremflickr.com/400/300?random='.rand(1, 100),
         'composition' => $faker->paragraph(1),
         'description' => $faker->paragraph(2)
+    ];
+});
+
+$factory->define(App\User::class, function (Faker\Generator $faker) {
+    return [
+        'name' =>  $faker->name,
+        'email' =>  $faker->safeEmail,
+        'phone_number' => str_random(15),
+        'password' =>  bcrypt('password'),
     ];
 });
