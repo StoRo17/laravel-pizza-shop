@@ -32,11 +32,29 @@
                 </form>
                 <ul class="nav navbar-nav navbar-right">
                     @if (Auth::guest())
+<<<<<<< Updated upstream
                         <li><a href="/user/{{ Auth::id() }}/profile"><i class="fa fa-user fa-lg"></i>&nbsp;Профиль</a></li>
                         <li><a href="/logout"><i class="fa fa-sign-out fa-lg"></i>&nbsp;Выйти</a></li>
                     @else
                         <li><a href="/login"><i class="fa fa-user fa-lg"></i>&nbsp;Войти</a></li>
                         <li><a href="/register"><i class="fa fa-sign-in fa-lg"></i>&nbsp;Регистрация</a></li>
+=======
+                        <li><a href="/login"><i class="fa fa-user fa-lg"></i>&nbsp;Войти</a></li>
+                        <li><a href="/register"><i class="fa fa-sign-in fa-lg"></i>&nbsp;Регистрация</a></li>
+                    @else
+                        <li class="dropdown">
+                            {{--TODO: write all styles at css file--}}
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="position: relative; padding-left: 50px;">
+                                <img src="images/uploads/avatars/{{ Auth::user()->avatar }}" alt="Аватар пользователя {{  Auth::user()->name }}"
+                                style="width: 32px; height: 32px; position: absolute; top: 10px; left: 10px; border-radius: 50%;">
+                                &nbsp;{{  Auth::user()->name }} <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" role="menu" style="width: 176px;">
+                                <li><a href="/user/{{ Auth::id() }}/profile"><i class="fa fa-user fa-btn"></i>&nbsp;Профиль</a></li>
+                                <li><a href="/logout"><i class="fa fa-sign-out fa-btn"></i>&nbsp;Выйти</a></li>
+                            </ul>
+                        </li>
+>>>>>>> Stashed changes
                     @endif
                 </ul>
             </div>
