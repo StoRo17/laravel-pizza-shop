@@ -25,6 +25,13 @@ Route::post('/create_product', 'ProductsController@store');
 Route::get('/{category}', 'ProductsController@showCategory')->where('category', 'pizza|sushi|drinks|sausages');
 Route::get('/{category}/{id}', 'ProductsController@show')->where('category', 'pizza|sushi|drinks|sausages');
 
+
+// User routes
+Route::group(['middleware' => ['web', 'auth']], function () {
+    Route::get('/user/profile', 'UserController@show');
+});
+
+// Admin routes
 Route::get('/admin', function() {
     return view('admin.adminDashboard');
 });
