@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use App\Http\Controllers\Controller;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+
 
 class RegisterController extends Controller
 {
@@ -21,15 +23,6 @@ class RegisterController extends Controller
     |
     */
 
-    use RegistersUsers;
-
-    /**
-     * Where to redirect users after login / registration.
-     *
-     * @var string
-     */
-    protected $redirectTo = '/';
-
     /**
      * Create a new controller instance.
      *
@@ -40,19 +33,9 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
-    /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    protected function validator(Request $request)
+    public function showRegistrationForm()
     {
-        return Validator::make($request->all(), [
-            'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|min:6|confirmed',
-        ]);
+        return view('auth.register');
     }
 
     /**
@@ -61,16 +44,27 @@ class RegisterController extends Controller
      * @param  Request $request
      * @return User
      */
-    protected function create(Request $request)
-
+    public function register(Request $request, User $user)
     {
-//        TODO: More difficult registration
-        User::create([
+
+        $this->validate($request, [
+            'name' => 'required|max:40',
+            'email' => 'required|email|max:255|unique:users',
+            'phone_number' => ['required', 'unique:users', 'regex:/^(\+7|8)[0-9]{10}$/'],
+            'password' => 'required|min:8|confirmed',
+        ]);
+
+        $regUser = $user->create([
             'name' => $request['name'],
             'email' => $request['email'],
+            'phone_number' => $request['phone_number'],
             'password' => bcrypt($request['password']),
         ]);
 
-        return redirect('/');
+
+
+        auth()->loginUsingId($regUser->id);
+
+        return redirect('/')->with('success_message', 'Вы успешно зарегистрировались!');
     }
 }
