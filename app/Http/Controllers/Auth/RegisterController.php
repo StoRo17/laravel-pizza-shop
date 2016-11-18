@@ -8,6 +8,7 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Session;
 
 
 class RegisterController extends Controller
@@ -31,11 +32,6 @@ class RegisterController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
-    }
-
-    public function showRegistrationForm()
-    {
-        return view('auth.register');
     }
 
     /**
@@ -62,9 +58,12 @@ class RegisterController extends Controller
         ]);
 
 
-
         auth()->loginUsingId($regUser->id);
 
-        return redirect('/')->with('success_message', 'Вы успешно зарегистрировались!');
+        Session::flash('success_message', 'Вы были успешно зарегистрированы!');
+
+        return response()->json([
+            'success' => 'Пользователь успешно зарегистрирован',
+        ]);
     }
 }
