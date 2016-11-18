@@ -33,7 +33,7 @@
                 </form>
                 <ul class="nav navbar-nav navbar-right">
                     @if (auth()->guest())
-                        <li><a href="/login"><i class="fa fa-user fa-btn"></i>&nbsp;Войти</a></li>
+                        <li><a href="#" data-toggle="modal" data-target="#login-modal"><i class="fa fa-user fa-btn"></i>&nbsp;Войти</a></li>
                         <li><a href="#" data-toggle="modal" data-target="#register-modal"><i class="fa fa-sign-in fa-btn"></i>&nbsp;Регистрация</a></li>
                     @else
                         <li class="dropdown">

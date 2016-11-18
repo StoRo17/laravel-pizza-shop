@@ -45,7 +45,8 @@ $(document).ready(function(){
             type: 'POST',
             data: formData,
             success:function(data){
-                window.location.href = '/';
+                $('#register-modal').modal('hide');
+                location.reload(true);
             },
             error: function (data) {
                 var obj = jQuery.parseJSON( data.responseText );
@@ -69,4 +70,44 @@ $(document).ready(function(){
             }
         });
     });
+
+    var loginForm = $("#loginForm");
+    loginForm.submit(function(e) {
+        e.preventDefault();
+        var formData = loginForm.serialize();
+        $('#form-errors-email').html("");
+        $('#form-errors-password').html("");
+        $('#form-login-errors').html("");
+        $("#email-div").removeClass("has-error");
+        $("#password-div").removeClass("has-error");
+        $("#login-errors").removeClass("has-error");
+
+        $.ajax({
+            url: '/login',
+            type: 'POST',
+            data: formData,
+            success: function(data) {
+                $('#login-modal').modal('hide');
+                location.reload(true);
+            },
+            error: function(data) {
+                console.log(data.responseText);
+                var obj = jQuery.parseJSON(data.responseText);
+                console.log(obj);
+                if (obj.email) {
+                    $("#email-div").addClass("has-error");
+                    $('#form-errors-email').html(obj.email);
+                }
+                if (obj.password) {
+                    $("#password-div").addClass("has-error");
+                    $('#form-errors-password').html(obj.password);
+                }
+                if (obj.error) {
+                    $("#login-errors").addClass('has-error');
+                    $("#form-login-errors").html(obj.error);
+                }
+            }
+        });
+    });
 });
+
