@@ -13,12 +13,14 @@
 
 Route::get('/', 'ProductsController@index');
 
+Route::group(['middleware' => 'web'], function () {
+    Route::post('/register', 'Auth\RegisterController@register');
+});
+
 Route::get('/login', 'Auth\LoginController@showLoginForm');
 Route::post('/login', 'Auth\LoginController@login');
 Route::get('/logout', 'Auth\LoginController@logout');
-Route::get('/register', 'Auth\RegisterController@showRegistrationForm');
 
-Route::post('/create_user', 'Auth\RegisterController@create');
 Route::get('/create_product', 'ProductsController@create');
 Route::post('/create_product', 'ProductsController@store');
 
