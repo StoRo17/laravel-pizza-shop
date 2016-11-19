@@ -1,6 +1,7 @@
 @extends('modals.modalLayout', [
     'modalName' => 'edit-profile-modal',
     'modalTitle' => 'Изменение данных',
+    'attr' => 'enctype=multipart/form-data',
     'formAction' => '/user/profile/update',
     'formID' => 'editProfileForm',
     'formName' => 'editProfileForm',
@@ -21,8 +22,8 @@
         <label class="control-label" for="phone_number">Телефон</label>
         <input class="form-control" id="phone_number" name="phone_number" required="" title="Пожалуйста, введите свой номер телефона" type="text" value="{{ $user->phone_number }}">
     </div>
-    <div class="form-group">
-        <label for="avatar" class="control-label">Аватар</label>
+    <div class="form-group" id="edit-avatar">
+        <label class="control-label">Аватар</label>
         <div class="input-group">
             <label class="input-group-btn">
                 <span class="btn btn-primary">

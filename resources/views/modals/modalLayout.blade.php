@@ -7,7 +7,7 @@
             </div>
             <div class="panel panel-filled">
                 <div class="panel-body">
-                    <form action="{{ $formAction }}" id="{{ $formID }}" method="post" name="{{ $formName }}">
+                    <form action="{{ $formAction }}" id="{{ $formID }}" method="post" name="{{ $formName }}" {{ $attr ?? '' }}>
                         @yield('formContent')
                         <div>
                             <button class="btn btn-login center-block">{{ $modalButtonTitle }}</button>

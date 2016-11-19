@@ -15,9 +15,10 @@ class UserController extends Controller
         return view('user.profile')->with('user', $user->find(auth()->user()->id));
     }
 
-    public function updateProfile(Request $request, User $user, Image $image)
+    public function updateProfile(Request $request)
     {
-        $user = $user->find(auth()->user()->id);
+
+        $user = auth()->user();
         if ($request['name'] == $user->name && $request['email'] == $user->email &&
             $request['phone_number'] == $user->phone_number && $request['avatar'] == $user->avatar
         ){
@@ -38,8 +39,8 @@ class UserController extends Controller
         $imageName = 'default.png';
         if($request->hasFile('avatar')) {
             $avatar = $request->file('avatar');
-            $imageName = str_random(12) . $avatar->getClientOriginalExtension();
-            $image->make($avatar)->resize(400, 400)->save(public_path('images/uploads/avatars' . $imageName));
+            $imageName = str_random(12) . '.' . $avatar->getClientOriginalExtension();
+            Image::make($avatar)->fit(400, 400)->save(public_path('images/uploads/avatars/' . $imageName));
         }
 
         $user->update([
