@@ -27,8 +27,8 @@ $(function() {
 
 });
 
-// AJAX Registration
 $(document).ready(function(){
+    // AJAX Registration
     var registerForm = $("#registerForm");
     registerForm.submit(function(e){
         e.preventDefault();
@@ -71,6 +71,7 @@ $(document).ready(function(){
         });
     });
 
+    //AJAX Login
     var loginForm = $("#loginForm");
     loginForm.submit(function(e) {
         e.preventDefault();
@@ -109,5 +110,6 @@ $(document).ready(function(){
             }
         });
     });
+
 });
 

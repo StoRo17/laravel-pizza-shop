@@ -44,11 +44,15 @@ class RegisterController extends Controller
     {
 
         $this->validate($request, [
-            'name' => 'required|max:40',
+            'name' => 'required|max:40|min:6',
             'email' => 'required|email|max:255|unique:users',
             'phone_number' => ['required', 'unique:users', 'regex:/^(\+7|8)[0-9]{10}$/'],
             'password' => 'required|min:8|confirmed',
         ]);
+
+        if ($request['phone_number'][0] == '8') {
+           $request['phone_number'] = preg_replace('/8/', '+7', $request['phone_number'], 1);
+        }
 
         $regUser = $user->create([
             'name' => $request['name'],

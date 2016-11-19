@@ -74,7 +74,7 @@ class ProductsController extends Controller
     {
         $name = mb_convert_case(trim($request->name), MB_CASE_TITLE);
         $imageName = $name . '.' . $request->file('image')->getClientOriginalExtension();
-        $pathToImages = base_path() . '/public/images/';
+        $pathToImages = public_path('images/');
 
         $request->file('image')->move($pathToImages, $imageName);
 

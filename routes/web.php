@@ -15,10 +15,10 @@ Route::get('/', 'ProductsController@index');
 
 Route::group(['middleware' => 'web'], function () {
     Route::post('/register', 'Auth\RegisterController@register');
+    Route::post('/login', 'Auth\LoginController@login');
+    Route::patch('/user/profile/update', 'UserController@updateProfile');
 });
 
-Route::get('/login', 'Auth\LoginController@showLoginForm');
-Route::post('/login', 'Auth\LoginController@login');
 Route::get('/logout', 'Auth\LoginController@logout');
 
 Route::get('/create_product', 'ProductsController@create');
