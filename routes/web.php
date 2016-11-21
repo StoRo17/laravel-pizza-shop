@@ -16,7 +16,6 @@ Route::get('/', 'ProductsController@index');
 Route::group(['middleware' => 'web'], function () {
     Route::post('/register', 'Auth\RegisterController@register');
     Route::post('/login', 'Auth\LoginController@login');
-    Route::patch('/user/profile/update', 'UserController@updateProfile');
 });
 
 Route::get('/logout', 'Auth\LoginController@logout');
@@ -31,6 +30,9 @@ Route::get('/{category}/{id}', 'ProductsController@show')->where('category', 'pi
 // User routes
 Route::group(['middleware' => ['web', 'auth']], function () {
     Route::get('/user/profile', 'UserController@show');
+    Route::patch('/user/profile/update', 'UserController@updateProfile');
+    Route::patch('/user/profile/update_password', 'UserController@updatePassword');
+    Route::post('/user/profile/update_avatar', 'UserController@updateAvatar');
 });
 
 // Admin routes

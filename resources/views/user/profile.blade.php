@@ -21,6 +21,7 @@
                                     <div class="row">
                                         <div class="col-md-3" align="center">
                                             <img src="{{ asset('/images/uploads/avatars') }}/{{ $user->avatar }}" id="profile-avatar">
+                                            <a href="" id="change-avatar-btn" class="btn btn-warning"><i class="fa fa-camera"></i>&nbsp;Изменить аватар</a>
                                         </div>
                                         <div class="col-md-9 ">
                                             <table class="table">
@@ -47,10 +48,25 @@
                                                 </tr>
                                                 </tbody>
                                             </table>
-                                            <a href="#" data-toggle="modal" data-target="#edit-profile-modal" class="btn btn-warning pull-right"><i class="fa fa-pencil"></i> Редактировать</a>
+                                            <form action="/user/profile/update_avatar" method="post" enctype="multipart/form-data" id="avatar-upload-form">
+                                                <div class="input-group" id="avatar-upload">
+                                                    <label class="input-group-btn">
+                                                    <span class="btn btn-primary">
+                                                        Browse&hellip; <input type="file" style="display: none;" multiple name="avatar">
+                                                    </span>
+                                                    </label>
+                                                    <input type="text" class="form-control" id="image-name" readonly>
+                                                </div>
+                                                <button class="btn btn-login" id="form-upload-btn">Загрузить</button>
+                                                {{ csrf_field() }}
+                                            </form>
+                                            <a href="" data-toggle="modal" data-target="#edit-profile-modal" class="btn btn-warning pull-right"><i class="fa fa-pencil"></i> Редактировать</a>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="alert alert-dismissable alert-danger" id="error-label">
+                                <p class="text-center" id="error-text"></p>
                             </div>
                             @if (Session::has('success_message'))
                                 <div class="alert alert-dismissable alert-success">

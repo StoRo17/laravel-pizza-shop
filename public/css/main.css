@@ -39,4 +39,24 @@
     height: 175px;
     border-radius: 50%;
     margin-top: 15px;
+    margin-bottom: 15px;
 }
+
+#avatar-upload-form {
+    display: none;
+}
+
+#avatar-upload {
+    width: 300px;
+    float: left;
+}
+
+#form-upload-btn {
+    float: left;
+    margin-left: 5px;
+}
+
+#error-label {
+    display: none;
+}
+
