@@ -41,7 +41,6 @@
                                                 </tr>
                                                 <tr>
                                                     <td>Пароль:</td>
-                                                    <td>***********</td>
                                                     <td><a href="#" data-toggle="modal" data-target="#edit-password-modal">Изменить пароль</a></td>
                                                 </tr>
                                                 <tr>
@@ -50,7 +49,6 @@
                                                 </tr>
                                                 </tbody>
                                             </table>
-                                            <a href="#" class="btn btn-primary pull-right"><i class="fa fa-pencil"></i> Редактировать</a>
                                             <form action="/user/profile/update_avatar" method="post" enctype="multipart/form-data" id="avatar-upload-form">
                                                 <div class="input-group" id="avatar-upload">
                                                     <label class="input-group-btn">
