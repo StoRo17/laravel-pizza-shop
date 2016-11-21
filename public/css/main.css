@@ -15,3 +15,48 @@
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
+#navbar-profile {
+    position: relative;
+    padding-left: 50px;
+}
+
+#navbar-profile-avatar {
+    width: 32px;
+    height: 32px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    border-radius: 50%;
+}
+
+#dropdown-menu-profile {
+    width: 176px;
+}
+
+#profile-avatar {
+    width: 175px;
+    height: 175px;
+    border-radius: 50%;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+#avatar-upload-form {
+    display: none;
+}
+
+#avatar-upload {
+    width: 300px;
+    float: left;
+}
+
+#form-upload-btn {
+    float: left;
+    margin-left: 5px;
+}
+
+#error-label {
+    display: none;
+}
+

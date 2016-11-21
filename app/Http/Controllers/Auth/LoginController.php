@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Lang;
 
 class LoginController extends Controller
 {
@@ -35,6 +37,40 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest', ['except' => 'logout']);
+    }
+
+    protected function sendFailedLoginResponse(Request $request)
+    {
+        if ($request->ajax()) {
+            return response()->json([
+               'error' => Lang::get('auth.failed')
+            ], 401);
+        }
+
+        return redirect()->back()
+            ->withInput($request->only($this->username(), 'remember'))
+            ->withErrors([
+                $this->username() => Lang::get('auth.failed'),
+            ]);
+    }
+
+    protected function sendLockoutResponse(Request $request)
+    {
+        $seconds = $this->limiter()->availableIn(
+            $this->throttleKey($request)
+        );
+
+        $message = Lang::get('auth.throttle', ['seconds' => $seconds]);
+
+        if ($request->ajax()) {
+            return response()->json([
+                'error' => $message
+            ], 401);
+        }
+
+        return redirect()->back()
+            ->withInput($request->only($this->username(), 'remember'))
+            ->withErrors([$this->username() => $message]);
     }
 
 

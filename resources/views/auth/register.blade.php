@@ -32,7 +32,7 @@
 
                             <div class="col-md-6">
                                 <input id="phone_number" type="text" class="form-control"
-                                       name="phone_number" value="{{ old('phone_number') }}" required autofocus
+                                       name="phone_number" value="{{ old('phone_number') }}"
                                        placeholder="+7..."
                                 >
 
