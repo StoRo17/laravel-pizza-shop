@@ -68,15 +68,13 @@ class UserController extends Controller
 
         $this->validate($request, ['avatar' => 'image']);
 
-        $imageName = 'default.png';
         if($request->hasFile('avatar')) {
             $avatar = $request->file('avatar');
             $imageName = str_random(12) . '.' . $avatar->getClientOriginalExtension();
             Image::make($avatar)->fit(400, 400)->save(public_path('images/uploads/avatars/' . $imageName));
-        }
-        
 
-        $user->update(['avatar' => $imageName]);
+            $user->update(['avatar' => $imageName]);
+        }
 
         return redirect('/user/profile')->with('success_message', 'Аватар успешно обновлён!');
     }
