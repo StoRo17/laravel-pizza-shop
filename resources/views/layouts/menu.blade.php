@@ -26,5 +26,6 @@
         </a>
     </div>
     <hr>
-    <a href="/create_product" class="btn btn-primary center-block">Добавить товар</a>
+    {{-- <a href="/create_product" class="btn btn-primary center-block">Добавить товар</a> --}}
+    @include('main.cart')
 </div>

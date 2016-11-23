@@ -60,3 +60,15 @@
     display: none;
 }
 
+#cart-prod-params {
+    width: 90px;
+    margin-bottom: 0;
+}
+
+#cart-price {
+    margin-bottom: 0px;
+}
+
+#cart-count {
+    padding-right: 0;
+}

@@ -88,6 +88,7 @@ class UserController extends Controller
                     'new_password' => 'required|min:8',
                     'new_password_confirmation' => 'required|min:8',
                 ]);
+                
                 if ($request['new_password'] != $request['old_password']) {
                     $user->update(['password' => bcrypt($request['new_password'])]);
                     Session::flash('success_message', 'Ваш пароль был успешно изменён!');
