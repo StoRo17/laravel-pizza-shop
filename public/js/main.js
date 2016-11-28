@@ -224,10 +224,40 @@ $(document).ready(function(){
 
             });
         });
-
     });
 
+    $(".add-to-cart").click(function(e) {
+        e.preventDefault();
+        var productId = $(this).attr("product-id");
+        $.ajax({
+            type: 'GET',
+            url: '/cart/add_to_cart/',
+            data: {productId: productId},
+            success: function(data) {
+                $("#cart").remove();
+                $(".sidebar").html(data.html);
+            }  
+        });
+    });
 
+    $(document).on('click', '.delete-from-cart', function(e) {
+        e.preventDefault();
+        var productId = $(this).attr("product-id");
+        console.log(productId);
+        $.ajax({
+            type: 'GET',
+            url: '/cart/delete_from_cart',
+            data: {productId: productId},
+            success: function(data) {
+                $("#cart").remove();
+                $(".sidebar").html(data.html);
+            }
+        });
+    });
 
+    var url = window.location;
+    $('ul.nav a').filter(function() {
+        return this.href == url;
+    }).parent().addClass('active');
 });
 

@@ -19,7 +19,7 @@ class UserController extends Controller
     /**
      * Update user profile
      * @param  Request $request 
-     * @return void           
+     * @return Responce $response
      */ 
     public function updateProfile(Request $request)
     {   

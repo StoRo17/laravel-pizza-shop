@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Carbon\Carbon;
-
+use App\Cart;
 use App\Http\Requests\ProductRequest;
 use App\Product;
+use Carbon\Carbon;
+use Illuminate\Http\Request;
+use Session;
 
 
 class ProductsController extends Controller
@@ -95,5 +97,41 @@ class ProductsController extends Controller
         Product::create($data);
 
         return redirect('/')->with('success_message', 'Товар был успешно добавлен!');
+    }
+
+    public function addToCart(Request $request, Product $product) 
+    {  
+        $product = $product->find($request->productId);
+        $oldCart = Session::has('cart') ? Session::get('cart') : null;
+        $cart = new Cart($oldCart);
+        $cart->addToCart($product, $product->id);
+        // Session::forget('cart');
+        Session::put('cart', $cart);
+
+        $returnHTML = view('cart.cart')->render();
+        return response()->json([
+            'success' => 'Успех',
+            'html' => $returnHTML
+            ]);
+    }
+
+    public function deleteFromCart(Request $request, Product $product)
+    {
+        $product = $product->find($request->productId);
+        $oldCart = Session::get('cart');
+        $cart = new Cart($oldCart);
+        $cart->deleteFromCart($product->id);
+
+        if (empty($cart->items)) {
+            Session::forget('cart');
+        } else {
+            Session::put('cart', $cart);
+        }
+    
+        $returnHTML = view('cart.cart')->render();
+        return response()->json([
+            'success' => 'Элемент удалён',
+            'html' => $returnHTML
+            ]);
     }
 }

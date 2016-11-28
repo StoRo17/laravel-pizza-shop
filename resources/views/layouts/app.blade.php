@@ -23,14 +23,32 @@
                 </button>
                 <a class="navbar-brand" href="/">МамПицца</a>
             </div>
-
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <form class="navbar-form navbar-left" role="search">
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Поиск">
-                    </div>
-                    <button type="submit" class="btn btn-default"><i class="fa fa-search fa-md"></i>&nbsp;Искать</button>
-                </form>
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="/pizza">
+                            <img src="https://maxcdn.icons8.com/iOS7/PNG/25/Food/pizza-25.png" title="Pizza" width="20">
+                            &nbsp;Пицца
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/sushi">
+                            <img src="https://maxcdn.icons8.com/iOS7/PNG/25/Cultures/sushi-25.png" title="Sushi" width="20">
+                            &nbsp;Суши
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/drinks">
+                            <img src="https://maxcdn.icons8.com/iOS7/PNG/25/Food/beer_bottle-25.png" title="Beer Bottle" width="20">&nbsp;Напитки
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/sausages">
+                            <img src="https://maxcdn.icons8.com/Android_L/PNG/24/Food/sauce-24.png" title="Sauce" width="20">
+                            &nbsp;Соусы к пицце
+                        </a>
+                    </li>
+                </ul>
                 <ul class="nav navbar-nav navbar-right">
                     @if (auth()->guest())
                         <li><a href="#" data-toggle="modal" data-target="#login-modal"><i class="fa fa-user fa-btn"></i>&nbsp;Войти</a></li>
@@ -53,7 +71,7 @@
     </nav>
 
     @yield('content')
-
+    
     @include('modals.loginModal')
     @include('modals.registerModal')
     <!-- Scripts -->

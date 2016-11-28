@@ -19,7 +19,7 @@
                             <h3 class="pull-right"><span class="label label-info">{{ $product->price }} руб.</span></h3>
                             <h3 id="product_name">{{ $product->name }}</h3>
                             <p id="product_composition">{{ $product->composition }}</p>
-                            <a href="" class="btn btn-success"><i class="fa fa-shopping-cart"></i>&nbsp;В корзину</a>
+                            <a href="" product-id="{{ $product->id }}" class="btn btn-success add-to-cart"><i class="fa fa-shopping-cart"></i>&nbsp;В корзину</a>
                             <a href="{{ url("/{$product->category}", $product->id) }}" class="btn btn-primary pull-right">
                                 Подробнее
                                 <i class="fa fa-arrow-right"></i>
@@ -29,5 +29,8 @@
                 </div>
             @endforeach
         </div>
+        <div class="col-md-2 sidebar">
+            @include('cart.cart')
+        </div>  
     </div>
 </div>

@@ -39,3 +39,6 @@ Route::group(['middleware' => ['web', 'auth']], function () {
 Route::get('/admin', function() {
     return view('admin.adminDashboard');
 });
+
+Route::get('/cart/add_to_cart', 'ProductsController@addToCart');
+Route::get('/cart/delete_from_cart', 'ProductsController@deleteFromCart');
