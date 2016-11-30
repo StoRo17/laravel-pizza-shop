@@ -4,10 +4,10 @@
 	</div>
 	<div class="panel-body" id="cart-items">
 		@if (Session::has('cart'))
-			@foreach (Session::get('cart')->items as $product)
+			@foreach (Session::get('cart')->getItems() as $product)
 				@include('cart.cartProductInfo', ['product' => $product])
 				@if ($loop->last)
-					@include('cart.cartFooter', ['totalPrice' => Session::get('cart')->totalPrice])
+					@include('cart.cartFooter', ['totalPrice' => Session::get('cart')->getTotalPrice()])
 				@endif
 			@endforeach
 		@else

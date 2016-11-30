@@ -7,6 +7,11 @@ class Cart
 	public $items = null;
 	public $totalPrice = 0;
 
+	/**
+	 * Constructor for the Cart that allows you to to reassing old cart values
+	 * to new cart object.
+	 * @param Cart $oldCart 
+	 */
 	public function __construct($oldCart)
 	{
 		if ($oldCart) {
@@ -15,6 +20,21 @@ class Cart
 		}
 	}
 
+	public function getItems()
+	{
+		return $this->items;
+	}
+
+	public function getTotalPrice()
+	{
+		return $this->totalPrice;
+	}
+			
+	/**
+	 * Add to cart given item and recalculate total price.
+	 * @param Product $item 
+	 * @param Integer $id   Product ID
+	 */
 	public function addToCart($item, $id)
 	{
 		$storedItem = [
@@ -35,9 +55,13 @@ class Cart
 		$this->totalPrice += $item->price;
 	}
 
+	/**
+	 * Delete product with that id from cart and recalculate total price.
+	 * @param  Integer $id Product ID
+	 */
 	public function deleteFromCart($id)
 	{
 		$this->totalPrice -= $this->items[$id]['price'];
 		unset($this->items[$id]);		
-	}	
+	}
 }

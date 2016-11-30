@@ -31,7 +31,6 @@ class ProductsController extends Controller
      * @param integer $id
      * @return Response
      */
-
     public function show($category, $id)
     {
         $product = Product::findOrFail($id);
@@ -46,7 +45,6 @@ class ProductsController extends Controller
      * @param string $category
      * @return $Response
      */
-
     public function showCategory($category)
     {
         $products = Product::where('category', $category)->get();
@@ -59,7 +57,6 @@ class ProductsController extends Controller
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-
     public function create()
     {
         return view('main.createProduct');
@@ -71,7 +68,6 @@ class ProductsController extends Controller
      * @param ProductRequest $request
      * @return \Illuminate\Http\RedirectResponse
      */
-
     public function store(ProductRequest $request)
     {
         $name = mb_convert_case(trim($request->name), MB_CASE_TITLE);
@@ -99,13 +95,18 @@ class ProductsController extends Controller
         return redirect('/')->with('success_message', 'Товар был успешно добавлен!');
     }
 
+    /**
+     * Find and add choosen product to cart.
+     * @param Request $request
+     * @param Product $product
+     * @return JSON response
+     */
     public function addToCart(Request $request, Product $product) 
     {  
         $product = $product->find($request->productId);
-        $oldCart = Session::has('cart') ? Session::get('cart') : null;
+        $oldCart = Session::has('cart') ? Session::get('cart') : null; // check if we already got cart in session
         $cart = new Cart($oldCart);
         $cart->addToCart($product, $product->id);
-        // Session::forget('cart');
         Session::put('cart', $cart);
 
         $returnHTML = view('cart.cart')->render();
@@ -115,12 +116,16 @@ class ProductsController extends Controller
             ]);
     }
 
-    public function deleteFromCart(Request $request, Product $product)
+    /**
+     * Delete choosen product from cart.
+     * @param  Request $request 
+     * @return JSON response 
+     */
+    public function deleteFromCart(Request $request)
     {
-        $product = $product->find($request->productId);
         $oldCart = Session::get('cart');
         $cart = new Cart($oldCart);
-        $cart->deleteFromCart($product->id);
+        $cart->deleteFromCart($request->productId);
 
         if (empty($cart->items)) {
             Session::forget('cart');
