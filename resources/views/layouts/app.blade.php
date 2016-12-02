@@ -78,5 +78,7 @@
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
     <script src="{{ asset('js/main.js') }}"></script>
+    <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+    <script src="{{ asset('js/checkout.js') }}"></script>
 </body>
 </html>

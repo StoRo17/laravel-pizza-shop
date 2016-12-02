@@ -7,6 +7,12 @@
                     <p class="text-center">{{ Session::get('success_message') }}</p>
                 </div>
             @endif
+            @if (Session::has('error'))
+                <div class="alert alert-dismissable alert-danger">
+                    <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                    <p class="text-center">{{ Session::get('error') }}</p>
+                </div>
+            @endif
             @foreach($products as $product)
                 <div class="col-md-4">
                     <div class="thumbnail">

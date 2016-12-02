@@ -33,6 +33,7 @@ Route::group(['middleware' => ['web', 'auth']], function () {
     Route::patch('/user/profile/update', 'UserController@updateProfile');
     Route::patch('/user/profile/update_password', 'UserController@updatePassword');
     Route::post('/user/profile/update_avatar', 'UserController@updateAvatar');
+    Route::post('/user/buy', 'ProductsController@buyProducts');
 });
 
 // Admin routes
@@ -42,3 +43,4 @@ Route::get('/admin', function() {
 
 Route::get('/cart/add_to_cart', 'ProductsController@addToCart');
 Route::get('/cart/delete_from_cart', 'ProductsController@deleteFromCart');
+

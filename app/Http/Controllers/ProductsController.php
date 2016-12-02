@@ -8,7 +8,8 @@ use App\Product;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Session;
-
+use Stripe\Charge;
+use Stripe\Stripe;
 
 class ProductsController extends Controller
 {
@@ -99,7 +100,7 @@ class ProductsController extends Controller
      * Find and add choosen product to cart.
      * @param Request $request
      * @param Product $product
-     * @return JSON response
+     * @return Response JSON
      */
     public function addToCart(Request $request, Product $product) 
     {  
@@ -119,7 +120,7 @@ class ProductsController extends Controller
     /**
      * Delete choosen product from cart.
      * @param  Request $request 
-     * @return JSON response 
+     * @return Response JSON
      */
     public function deleteFromCart(Request $request)
     {
@@ -138,5 +139,26 @@ class ProductsController extends Controller
             'success' => 'Элемент удалён',
             'html' => $returnHTML
             ]);
+    }
+
+    public function buyProducts(Request $request)
+    {
+        $cart = Session::get('cart');
+
+        Stripe::setApiKey('sk_test_WLRHLuQRqs7pJYIgOiOAVuHF');
+
+        try {
+            Charge::create([
+                'amount' => round(($cart->totalPrice/60), 2) * 100,
+                'currency' => 'usd',
+                'source' => $request->input('stripeToken'),
+                'description' => 'Test Charge'
+            ]);
+        } catch (\Exception $error) {
+            return redirect('/')->with('error', $error->getMessage());
+        }
+
+        Session::forget('cart');
+        return redirect('/')->with('success_message', 'Покупка успешно завершена!');
     }
 }

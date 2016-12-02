@@ -15,7 +15,7 @@
                     <div class="tab-content">
                         <div class="tab-pane fade in active" id="tab-profile">
                             <div class="panel panel-info">
-                                <div class="panel panel-heading">
+                                <div class="panel-heading">
                                     <h2 class="panel-title">Ваши данные</h2>
                                 </div>
                                 <div class="panel-body">
@@ -41,11 +41,11 @@
                                                 </tr>
                                                 <tr>
                                                     <td>Пароль:</td>
-                                                    <td><a href="#" data-toggle="modal" data-target="#edit-password-modal">Изменить пароль</a></td>
+                                                    <td><a href="" data-toggle="modal" data-target="#edit-password-modal">Изменить пароль</a></td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Ваши адреса:</td>
-                                                    <td>Всякие окна с адресами</td>
+                                                    <td>Ваш адрес:</td>
+                                                    <td>Адрес</td>
                                                 </tr>
                                                 </tbody>
                                             </table>
@@ -80,7 +80,17 @@
                             <p>Тут должна быть история заказов пользователя</p>
                         </div>
                         <div class="tab-pane fade in" id="tab-payment-info">
-                            <p>Тут должна быть платёжная информация пользователя</p>
+                            <div class="col-md-6 col-md-offset-3">
+                                <div class="panel panel-info center-block">
+                                    <div class="panel-heading">
+                                        <h2 class="panel-title">Ваши платёжные данные</h2>
+                                    </div>
+                                    <div class="panel-body">
+                                        <h2><span class="label label-primary center-block">Текущая карта **** 4096</span></h2>
+                                        <a href="" class="btn btn-warning center-block">Изменить</a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
