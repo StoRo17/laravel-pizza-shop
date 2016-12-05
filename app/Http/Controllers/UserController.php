@@ -13,9 +13,22 @@ use Session;
 class UserController extends Controller
 {
     public function show(User $user)
-    {
-        return view('user.profile')->with('user', $user->find(auth()->user()->id));
+    {   
+        $orders = auth()->user()->orders;
+        $orders->transform(function($order, $key) {
+            $order->cart = unserialize($order->cart);
+            return $order;
+        });
+        $orders = $orders->sortByDesc(function($order) {
+            return $order->created_at;
+        });
+        // dd($orders['0']->created_at);
+        return view('user.profile')->with([
+            'user' => $user->find(auth()->user()->id),
+            'orders' => $orders
+            ]);
     }
+    
     /**
      * Update user profile
      * @param  Request $request 
@@ -27,7 +40,7 @@ class UserController extends Controller
 
         // Check if something has changed
         if ($request['name'] == $user->name && $request['email'] == $user->email &&
-            $request['phone_number'] == $user->phone_number)
+            $request['phone_number'] == $user->phone_number && $request['address'] == $user->address)
         {
             return response()->json([
                 'message' => 'Nothing`s changed',
@@ -44,11 +57,12 @@ class UserController extends Controller
         if ($request['phone_number'][0] == '8') {
             $request['phone_number'] = preg_replace('/8/', '+7', $request['phone_number'], 1);
         }
-
+        
         $user->update([
             'name' => $request['name'],
             'email' => $request['email'],
             'phone_number' => $request['phone_number'],
+            'address' => $request['address'],
         ]);
 
         Session::flash('success_message', 'Ваши данные были успешно обновлены!');

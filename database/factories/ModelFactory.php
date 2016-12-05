@@ -22,9 +22,8 @@ $factory->define(App\Product::class, function (Faker\Generator $faker) {
 
     return [
         'category' => $categories[array_rand($categories)],
-        'name' => $faker->sentence(),
+        'name' => $faker->firstNameMale(),
         'price' => $faker->numberBetween(200, 450),
-        'weight' => $faker->numberBetween(200, 450),
         'composition' => $faker->paragraph(1),
         'description' => $faker->paragraph(2)
     ];

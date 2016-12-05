@@ -25,4 +25,9 @@
         <input class="form-control" id="email" name="email" required="" title="Пожалуйста, введите свой email" type="email" value="{{ $user->email }}">
         <span class="help-block"><strong id="edit-errors-email"></strong></span>
     </div>
+    <div class="form-group" id="edit-address">
+        <label class="control-label" for="address">Адрес</label>
+        <input class="form-control" id="address" name="address" required="" title="Пожалуйста, введите свой адрес" type="address" value="{{ $user->address }}">
+        <span class="help-block"><strong id="edit-errors-address"></strong></span>
+    </div>
 @overwrite

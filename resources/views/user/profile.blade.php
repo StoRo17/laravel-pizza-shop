@@ -10,7 +10,6 @@
                     <ul class="nav nav-tabs">
                         <li class="active"><a href="#tab-profile" data-toggle="tab"><i class="fa fa-user fa-btn"></i>&nbsp;Мой профиль</a></li>
                         <li><a href="#tab-order-story" data-toggle="tab"><i class="fa fa-cart-arrow-down fa-btn"></i>&nbsp;История заказов</a></li>
-                        <li><a href="#tab-payment-info" data-toggle="tab"><i class="fa fa-credit-card fa-btn"></i>&nbsp;Платёжная информация</a></li>
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane fade in active" id="tab-profile">
@@ -45,7 +44,7 @@
                                                 </tr>
                                                 <tr>
                                                     <td>Ваш адрес:</td>
-                                                    <td>Адрес</td>
+                                                    <td>{{ $user->address }}</td>
                                                 </tr>
                                                 </tbody>
                                             </table>
@@ -77,18 +76,34 @@
                             @endif
                         </div>
                         <div class="tab-pane fade in" id="tab-order-story">
-                            <p>Тут должна быть история заказов пользователя</p>
-                        </div>
-                        <div class="tab-pane fade in" id="tab-payment-info">
-                            <div class="col-md-6 col-md-offset-3">
-                                <div class="panel panel-info center-block">
-                                    <div class="panel-heading">
-                                        <h2 class="panel-title">Ваши платёжные данные</h2>
-                                    </div>
-                                    <div class="panel-body">
-                                        <h2><span class="label label-primary center-block">Текущая карта **** 4096</span></h2>
-                                        <a href="" class="btn btn-warning center-block">Изменить</a>
-                                    </div>
+                            <div class="panel panel-info">
+                                <div class="panel-heading">История заказов</div>
+                                <div class="panel-body">
+                                    @if($user->orders)
+                                        @foreach($orders as $order)
+                                            <div class="panel panel-primary">
+                                                <div class="panel-body">
+                                                    <ul class="list-group">
+                                                    @foreach($order->cart->items as $item)
+                                                        <li class="list-group-item">
+                                                            <span class="badge">{{ $item['price'] }} руб.</span>
+                                                            {{ $item['item']['name'] }} || {{ $item['quantity'] }} шт.
+                                                        </li>
+                                                    @endforeach
+                                                    </ul>
+                                                </div>
+                                                <div class="panel-footer">
+                                                    <strong>Сумма: {{ $order->cart->totalPrice }} руб.</strong> ||
+                                                    <strong>Адрес доставки: {{ $order->address }}</strong>
+                                                    <strong class="pull-right">
+                                                        Дата заказа: {{ $order->created_at }}
+                                                    </strong>
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                    @else
+                                        <h2><span class="label label-primary center-block">ПОКА ПУСТО</span></h2>
+                                    @endif
                                 </div>
                             </div>
                         </div>

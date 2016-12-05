@@ -18,8 +18,6 @@ class CreateProductsTable extends Migration
             $table->string('category');
             $table->string('name')->unique();
             $table->unsignedInteger('price');
-            $table->unsignedInteger('weight');
-            $table->unsignedInteger('diameter')->nullable();
             $table->string('image')->default('product_default.jpg');
             $table->string('composition');
             $table->longText('description')->nullable();

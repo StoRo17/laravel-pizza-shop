@@ -190,9 +190,10 @@ $(document).ready(function(){
         }
 
         var fileExtension = imageName.val().substr(imageName.val().indexOf('.')+1);
-        if (fileExtension != 'jpg' || fileExtension != 'png') {
+        if (fileExtension != 'jpg' && fileExtension != 'png') {
+            console.log(fileExtension);
             errorLabel.hide(150);
-            errorText.html('Изображение может быть только в формате jpg и png!');
+            errorText.html('Изображение может быть только в формате jpg или png!');
             errorLabel.show(200);
             return false;
         }

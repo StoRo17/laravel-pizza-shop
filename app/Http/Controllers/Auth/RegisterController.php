@@ -53,12 +53,13 @@ class RegisterController extends Controller
         if ($request['phone_number'][0] == '8') {
            $request['phone_number'] = preg_replace('/8/', '+7', $request['phone_number'], 1);
         }
-
+        
         $regUser = $user->create([
             'name' => $request['name'],
             'email' => $request['email'],
             'phone_number' => $request['phone_number'],
             'password' => bcrypt($request['password']),
+            'address' => $request['address'],
         ]);
 
 

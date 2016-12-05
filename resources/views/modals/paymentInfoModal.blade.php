@@ -56,7 +56,7 @@
                 <div class="col-xs-12">
                     <div class="form-group">
                         <label for="address">АДРЕС</label>
-                        <input type="text" class="form-control" id="address" name="address" placeholder="Адрес доставки">
+                        <input type="text" class="form-control" id="address" name="address" placeholder="Адрес доставки" value="{{ auth()->user()->address }}">
                     </div>
                 </div>
             </div>

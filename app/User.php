@@ -44,7 +44,8 @@ class User extends Authenticatable
         'email',
         'password',
         'avatar',
-        'phone_number'
+        'phone_number',
+        'address'
     ];
 
     /**
@@ -55,4 +56,9 @@ class User extends Authenticatable
     protected $hidden = [
         'remember_token',
     ];
+
+    public function orders()
+    {
+        return $this->hasMany('App\Order');
+    }
 }

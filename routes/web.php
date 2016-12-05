@@ -16,9 +16,10 @@ Route::get('/', 'ProductsController@index');
 Route::group(['middleware' => 'web'], function () {
     Route::post('/register', 'Auth\RegisterController@register');
     Route::post('/login', 'Auth\LoginController@login');
+    Route::get('/logout', 'Auth\LoginController@logout');
+    Route::get('/cart/add_to_cart', 'ProductsController@addToCart');
+    Route::get('/cart/delete_from_cart', 'ProductsController@deleteFromCart');
 });
-
-Route::get('/logout', 'Auth\LoginController@logout');
 
 Route::get('/create_product', 'ProductsController@create');
 Route::post('/create_product', 'ProductsController@store');
@@ -41,6 +42,5 @@ Route::get('/admin', function() {
     return view('admin.adminDashboard');
 });
 
-Route::get('/cart/add_to_cart', 'ProductsController@addToCart');
-Route::get('/cart/delete_from_cart', 'ProductsController@deleteFromCart');
+
 

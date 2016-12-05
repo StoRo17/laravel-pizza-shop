@@ -22,6 +22,11 @@
         <input class="form-control" id="phone_number" name="phone_number" placeholder="+79999999999" required="" title="Пожалуйста, введите свой номер телефона" type="text" value="">
         <span class="help-block"><strong id="register-errors-phone_number"></strong></span> <span class="help-block small">Ваш номер телефона</span>
     </div>
+    <div class="form-group" id="register-address">
+        <label class="control-label" for="address">Адрес</label>
+        <input class="form-control" id="address" name="address" placeholder="ул.Пушкина, д.2, к.1, кв.17" title="Пожалуйста, введите свой адрес" type="address" value="">
+        <span class="help-block"><strong id="register-errors-address"></strong></span> <span class="help-block small">Можно ввести его позже</span>
+    </div>
     <div class="form-group" id="register-password">
         <label class="control-label" for="password">Пароль</label>
         <input class="form-control" id="password" name="password" placeholder="********" required="" title="Пожалуйста, введите пароль" type="password" value="">
